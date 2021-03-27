@@ -15,6 +15,11 @@
 			padding: 0;
 		}
 
+		body{
+			overflow-x: hidden;
+			overflow-y: hidden;
+		}
+
 		.changeColor {
 			width: 100vw;
 			height: 100vh;
@@ -25,9 +30,11 @@
 </head>
 
 <body>
-	<div class="changeColor"></div>
+	<canvas class="changeColor" id="starfield"></div>
 
 	<script>
+
+		//background colour
 		var div =
 			document.querySelector(".changeColor");
 
@@ -38,6 +45,26 @@
 				div.style.backgroundColor
 					= `rgb(${x}, ${y}, ${x - y})`;
 			});
+
+		//starfield
+		function getRandom(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+		var canvas = document.getElementById('starfield'),
+			context = canvas.getContext('2d'),
+			stars = 6000,
+			colorrange = [0, 60, 240];
+		for (var i = 0; i < stars; i++) {
+			var x = Math.random() * canvas.offsetWidth;
+			y = Math.random() * canvas.offsetHeight,
+				radius = Math.random() * 1.2,
+				hue = colorrange[getRandom(0, colorrange.length - 1)],
+				sat = getRandom(50, 100);
+			context.beginPath();
+			context.arc(x, y, radius, 0, 360);
+			context.fillStyle = "hsl(" + hue + ", " + sat + "%, 88%)";
+			context.fill();
+		}
 	</script>
 </body>
 
