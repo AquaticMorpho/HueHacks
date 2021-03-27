@@ -15,57 +15,59 @@
 			padding: 0;
 		}
 
-		body{
+		body {
 			overflow-x: hidden;
 			overflow-y: hidden;
+			background-color: black;
 		}
 
-		.changeColor {
-			width: 100vw;
-			height: 100vh;
-			background-color: chocolate;
-			background-size: cover;
+		.logo {
+			width: fit-content;
+			height: fit-content;
+			background: transparent;
+			position: absolute;
+			top: 0;
+			bottom: 150px;
+			left: 0;
+			right: 0;
+			margin: auto;
+			color: white;
+		}
+
+		.nameForm {
+			width: fit-content;
+			height: fit-content;
+			background: transparent;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			font-size: 20px;
+			color: white;
 		}
 	</style>
 </head>
 
 <body>
-	<canvas class="changeColor" id="starfield"></div>
+	<div id="particles-js">
+		<div class="logo">
+			<h1>Hue Hacks 2021!</h1>
+		</div>
+		<div class="nameForm" id="starfield">
+			<form action="add_name" method="POST">
+				<input type="text" name="name" placeholder="Your Name">
+				<input type="submit" value="Submit">
+			</form>
+			{% for name in names %}
+			{{name}}<br>
+			{% endfor %}
+		</div>
 
-	<script>
-
-		//background colour
-		var div =
-			document.querySelector(".changeColor");
-
-		div.addEventListener(
-			"mousemove", function (e) {
-				x = e.offsetX;
-				y = e.offsetY;
-				div.style.backgroundColor
-					= `rgb(${x}, ${y}, ${x - y})`;
-			});
-
-		//starfield
-		function getRandom(min, max) {
-			return Math.floor(Math.random() * (max - min + 1)) + min;
-		}
-		var canvas = document.getElementById('starfield'),
-			context = canvas.getContext('2d'),
-			stars = 6000,
-			colorrange = [0, 60, 240];
-		for (var i = 0; i < stars; i++) {
-			var x = Math.random() * canvas.offsetWidth;
-			y = Math.random() * canvas.offsetHeight,
-				radius = Math.random() * 1.2,
-				hue = colorrange[getRandom(0, colorrange.length - 1)],
-				sat = getRandom(50, 100);
-			context.beginPath();
-			context.arc(x, y, radius, 0, 360);
-			context.fillStyle = "hsl(" + hue + ", " + sat + "%, 88%)";
-			context.fill();
-		}
-	</script>
+		<script src="../static/particles.js"></script>
+		<script src="../static/app.js"></script>
+	</div>
 </body>
 
 </html>
