@@ -1,31 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,
+				initial-scale=1.0" />
+	<title>
+		HueHacks 2021
+	</title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.changeColor {
+			width: 100vw;
+			height: 100vh;
+			background-color: chocolate;
+			background-size: cover;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="changeColor"></div>
 
 	<script>
-	var rVal = Math.floor((Math.random() * 255));
-	var gVal = Math.floor((Math.random() * 255));
-	var bVal = Math.floor((Math.random() * 255));
-	function changeBackgroundColor(e){ <!-- e = event info -->
-		var x = e.clientX; var y = e.clientY;
+		var div =
+			document.querySelector(".changeColor");
 
-		rVal += Math.floor((Math.random() * 11) - 5); if(rVal > 255){ rVal = 255; } if(rVal < 0){ rVal = 0; }
-		gVal += Math.floor((Math.random() * 11) - 5); if(rVal > 255){ rVal = 255; } if(gVal < 0){ gVal = 0; }
-		bVal += Math.floor((Math.random() * 11) - 5); if(rVal > 255){ rVal = 255; } if(bVal < 0){ bVal = 0; }
-
-		var hexVal = rVal.toString(16) + gVal.toString(16) + bVal.toString(16);
-		document.getElementById("body").style.backgroundColor = "#" + hexVal; <!-- = ("background-color: "#" + hexVal + ";"); -->
-	}
+		div.addEventListener(
+			"mousemove", function (e) {
+				x = e.offsetX;
+				y = e.offsetY;
+				div.style.backgroundColor
+					= `rgb(${x}, ${y}, ${x - y})`;
+			});
 	</script>
-
-	<head>
-		<link rel="stylesheet" href="{{ url_for('static', filename='mainPageStyle.css') }}">
-		<title>Hue Hacks 2021</title>
-	</head>
-
-	<body id="body" onmousemove="changeBackgroundColor(event)">
-		<p>Test Page.</p>
-
-		
-	</body>
+</body>
 
 </html>
