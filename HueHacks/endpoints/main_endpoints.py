@@ -5,7 +5,7 @@ def main_view():
         dat = json.load(f)
     names = dat['names']
 
-    return render_template('mainPage_tmp.html', names=names)
+    return render_template('mainPage.html', names=names)
 
 def main_view_post():
     name_sent = request.form["name"]
