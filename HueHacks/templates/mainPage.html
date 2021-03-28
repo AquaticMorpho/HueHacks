@@ -32,9 +32,13 @@
 	</div>
 
 	<script src="{{ url_for('static', filename='particles.js') }}"></script>
-	<script src="{{ url_for('static', filename='app.js') }}"></script>
-	<script src="../static/particles.js"></script>
-	<script src="../static/app.js"></script>
+	<!-- code taken from app.js -->
+		<script> 
+		var pJSfilepath = "{{ url_for('static', filename='particles.json') }}" 
+		particlesJS.load('particles-js', pJSfilepath, function() {
+			console.log('particles.js loaded - callback');
+		});  
+	</script>
 	</div>
 </body>
 
