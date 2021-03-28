@@ -1,0 +1,59 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	background-color: black;
+
+}
+
+.backGroundColor{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -10;
+	background-color: chocolate;
+	background-size: cover;
+}
+.changeColor {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 10;
+	background-size: cover;
+}
+
+.logo {
+	width: fit-content;
+	height: fit-content;
+	background: transparent;
+	position: absolute;
+	top: 40%;
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	font: 24px Arial, sans-serif;
+	color: black;
+}
+
+.nameForm {
+	width: fit-content;
+	height: fit-content;
+	z-index: 1;
+	background: transparent;
+	text-align: center;
+	position: relative;
+	top: 24 px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-size: 20px;
+	color: white;
+}
